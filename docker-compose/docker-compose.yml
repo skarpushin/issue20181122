@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+    web0:
+        container_name: web0
+        image: isrdc/webapp:0.0.1
+        environment:
+         - IGNITE_ID=A1
+        ports: 
+         - 10.9.9.1:8080:8080
+         - 10.9.9.1:47500:47500
+         - 10.9.9.1:47100:47100
+        networks:
+         - isrdc_network
+        restart: always
+
+    web1:
+        container_name: web1
+        image: isrdc/webapp:0.0.1
+        environment:
+         - IGNITE_ID=B1
+        ports: 
+         - 10.9.9.1:8081:8080
+         - 10.9.9.1:47501:47500
+         - 10.9.9.1:47101:47100
+        networks:
+         - isrdc_network
+        restart: always
+        
+networks:
+  isrdc_network:
+    name: isrdc_network
+        
